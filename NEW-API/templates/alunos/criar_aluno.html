@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adicionar Aluno</title>
+</head>
+<body>
+  <h1>Adicionar Aluno</h1>
+  <form action="{{ url_for('alunos.create_aluno') }}" method="post">
+    <label for="nome">Nome:</label><br>
+    <input type="text" id="nome" name="nome"><br>
+
+    <label for="idade">Idade:</label><br>
+    <input type="number" id="idade" name="idade"><br>
+
+    <label for="data_nascimento">Data de Nascimento:</label><br>
+    <input type="date" id="data_nascimento" name="data_nascimento"><br>
+
+    <label for="nota_primeiro_semestre">Nota Primeiro Semestre:</label><br>
+    <input type="number" step="0.1" id="nota_primeiro_semestre" name="nota_primeiro_semestre"><br>
+
+    <label for="nota_segundo_semestre">Nota Segundo Semestre:</label><br>
+    <input type="number" step="0.1" id="nota_segundo_semestre" name="nota_segundo_semestre"><br>
+
+    <label for="media_final">Média Final:</label><br>
+    <input type="number" step="0.1" id="media_final" name="media_final"><br>
+
+    <label for="turma_id">Turma ID:</label><br>
+    <input type="number" id="turma_id" name="turma_id"><br>
+
+    <input type="submit" value="Adicionar Aluno">
+  </form>
+  <a href="{{ url_for('alunos.get_alunos') }}">Voltar para a lista de alunos</a>
+</body>
+</html>
+
+

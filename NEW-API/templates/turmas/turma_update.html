@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar Turma</title>
+</head>
+<body>
+  <h1>Editar Turma</h1>
+  <form action="{{ url_for('turmas.update_turma', id_turma=turma.id) }}" method="POST">
+    <label for="descricao">Descrição:</label><br>
+    <input type="text" id="descricao" name="descricao" value="{{ turma.descricao }}"><br>
+    <label for="ativo">Ativo:</label><br>
+    <input type="checkbox" id="ativo" name="ativo" {% if turma.ativo %}checked{% endif %}><br>
+    <label for="professor_id">Professor ID:</label><br>
+    <input type="number" id="professor_id" name="professor_id" value="{{ turma.professor_id }}"><br>
+    <input type="submit" value="Atualizar Turma">
+  </form>
+  <a href="{{ url_for('turmas.get_turmas') }}">Voltar para a lista de turmas</a>
+</body>
+</html>

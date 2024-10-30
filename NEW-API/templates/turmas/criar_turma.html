@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adicionar Turma</title>
+</head>
+<body>
+  <h1>Adicionar Turma</h1>
+  <form action="{{ url_for('turmas.create_turma') }}" method="post">
+    <label for="descricao">Descrição:</label><br>
+    <input type="text" id="descricao" name="descricao"><br>
+  
+    <label for="ativo">Ativo:</label><br>
+    <input type="checkbox" id="ativo" name="ativo"><br>
+  
+    <label for="professor_id">Professor ID:</label><br>
+    <input type="number" id="professor_id" name="professor_id"><br>
+  
+    <input type="submit" value="Adicionar Turma">
+  </form>
+  <a href="{{ url_for('turmas.get_turmas') }}">Voltar para a lista de turmas</a>
+</body>
+</html>

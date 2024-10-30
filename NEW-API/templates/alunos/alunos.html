@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Alunos</title>
+
+</head>
+<body>
+  <h1>Lista de Alunos</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      {% for aluno in alunos %}
+      <tr>
+        <td>{{ aluno.id }}</td>
+        <td><a href="{{ url_for('alunos.get_aluno', id_aluno=aluno.id) }}">{{ aluno.nome }}</a></td>
+        
+        <td>
+          <a href="{{ url_for('alunos.editar_aluno_page', id_aluno=aluno.id) }}">Editar</a>
+          <form action="{{ url_for('alunos.delete_aluno', id_aluno=aluno.id) }}" method="POST" style="display:inline;">
+            <button type="submit">Excluir</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <a href="{{ url_for('alunos.adicionar_aluno_page') }}">Adicionar Novo Aluno</a>
+</body>
+</html>
+

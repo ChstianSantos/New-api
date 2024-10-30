@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalhes do Aluno</title>
+</head>
+<body>
+  <h1>Detalhes do Aluno</h1>
+  <br><p><strong>ID:</strong> {{ aluno.id }}</p></br>
+
+  <br><p><strong>Nome:</strong> {{ aluno.nome }}</p></br>
+
+  <br><p><strong>Idade:</strong> {{ aluno.idade }}</p></br>
+
+  <br><p><strong>Turma:</strong> {{ aluno.turma.descricao if aluno.turma else 'Sem turma' }}</p></br>
+
+  <br><p><strong>Data de Nascimento:</strong> {{ aluno.data_nascimento }}</p><br>
+
+  <br><p><strong>Nota do Primeiro Semestre:</strong> {{ aluno.nota_primeiro_semestre }}</p></br>
+
+  <br><p><strong>Nota do Segundo Semestre:</strong> {{ aluno.nota_segundo_semestre }}</p></br>
+
+  <br><p><strong>Média Final:</strong> {{ aluno.media_final }}</p></br>
+
+  <br><form action="{{ url_for('alunos.delete_aluno', id_aluno=aluno.id) }}" method="POST"></br>
+    
+    <button type="submit">Excluir Aluno</button>
+  </form>
+  <a href="{{ url_for('alunos.get_alunos') }}">Voltar para a lista de alunos</a>
+</body>
+</html>

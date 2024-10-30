@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Professores</title>
+</head>
+<body>
+  <h1>Lista de Professores</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Idade</th>
+        <th>Matéria</th>
+        <th>Observações</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for professor in professores %}
+      <tr>
+        <td>{{ professor.id }}</td>
+        <td><a href="{{ url_for('professores.get_professor', id_professor=professor.id) }}">{{ professor.nome }}</a></td>
+        <td>{{ professor.idade }}</td>
+        <td>{{ professor.materia }}</td>
+        <td>{{ professor.observacoes }}</td>
+        <td>
+          <a href="{{ url_for('professores.editar_professor_page', id_professor=professor.id) }}">Editar</a>
+          <form action="{{ url_for('professores.delete_professor', id_professor=professor.id) }}" method="POST" style="display:inline;">
+            <button type="submit">Excluir</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <a href="{{ url_for('professores.adicionar_professor_page') }}">Adicionar Novo Professor</a>
+</body>
+</html>
+

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Turmas</title>
+  
+</head>
+<body>
+  <h1>Lista de Turmas</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Descrição</th>
+        <th>Ativo</th>
+        <th>Professor ID</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for turma in turmas %}
+      <tr>
+        <td>{{ turma.id }}</td>
+        <td><a href="{{ url_for('turmas.get_turma', id_turma=turma.id) }}">{{ turma.descricao }}</a></td>
+        <td>{{ turma.ativo }}</td>
+        <td>{{ turma.professor_id }}</td>
+        <td>
+          <a href="{{ url_for('turmas.editar_turma_page', id_turma=turma.id) }}">Editar</a>
+          <form action="{{ url_for('turmas.delete_turma', id_turma=turma.id) }}" method="POST" style="display:inline;">
+            <button type="submit">Excluir</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <a href="{{ url_for('turmas.adicionar_turma_page') }}">Adicionar Nova Turma</a>
+</body>
+</html>
